@@ -1,1 +1,5 @@
-# 1INF29 creation
+# 1INF29
+
+```c
+fork();
+```
