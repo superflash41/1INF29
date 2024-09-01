@@ -1,0 +1,9 @@
+a.out-+-a.out-+-a.out-+-a.out
+      |       |       `-a.out
+      |       `-a.out-+-a.out
+      |               `-a.out
+      |-a.out-+-a.out-+-a.out
+      |       |       `-a.out
+      |       `-a.out-+-a.out
+      |               `-a.out
+      `-sh---pstree
