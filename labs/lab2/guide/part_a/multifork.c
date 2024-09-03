@@ -29,10 +29,10 @@ int main() {
 }
 
 /* explanation:
- * waitpid makes parents wait for thir children's end of execution
- * we comment them in order to get to see the full tree in an instant
+ * waitpid makes parents wait for their children's status.
+ * we comment them in order to get to see the full tree in an instant.
  * then we wait for the children with sleep() and use waitpid at the end
- * to avoid zombie processes being created
+ * to avoid zombie processes being created.
  * in the example we see a multifork with just 3 processes. here is one with 4
- * to make clearer how is the tree actually being created
+ * to make clearer how is the tree actually being created.
 */

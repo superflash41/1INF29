@@ -58,8 +58,8 @@ int main(int na, char** argv) {
             free(a);
         } else { // i am a victim
             write(fdp[pid][WRITE], &mypid, sizeof(mypid));
-            for (j=0; j<n; j++) close_fdp(fdp[j]); // ready to die 
-            pause();
+            for (j=0; j<n; j++) close_fdp(fdp[j]);  
+            pause(); // ready to die
         }
     }
     for (i=0; i<n; i++) free(fdp[i]);

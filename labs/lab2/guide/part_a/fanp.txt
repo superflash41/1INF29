@@ -1,2 +1,2 @@
-a.out-+-3*[a.out]
+a.out-+-4*[a.out]
       `-sh---pstree
