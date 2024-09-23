@@ -1,0 +1,21 @@
+# Pregunta 2
+
+RECURSO "IO"
+TAREA "CPU BOUND" INICIO= 0 PERIODO = 0 PRIORIDAD=1
+	[CPU,10]
+	[1,1]
+	[CPU,10]
+	[1,1]
+	[CPU,10]
+	[1,1]
+	[CPU,10]
+	[1,1]
+	[CPU,10]
+	[1,1]
+TAREA "IO BOUND" INICIO= 0 PERIODO = 0 PRIORIDAD=1
+	[CPU,1]
+	[CPU,1]
+	[CPU,1]
+	[CPU,1]
+	[CPU,1]
+

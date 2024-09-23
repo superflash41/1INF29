@@ -1,0 +1,55 @@
+# Comentario
+# Los recursos y las tareas se numeran a partir de 1.
+
+
+# Este es el recurso 1
+RECURSO "Harl" 
+
+# este es el recurso 2
+RECURSO "DISCO IDE"
+
+# Este el 3
+RECURSO "Teclado"
+
+
+# Etc.... 
+RECURSO "Modem"
+RECURSO "Floppy"
+# Tarea nombre [recurso, duración] [recurso, duración] ......
+# "CPU" es una palabra reservada indica que la tarea requiere procesador.
+# "INICIO" indica que tiene un offset.
+# TAREA "identificador", PERIODO=val INICIO=val PRIORIDAD=val
+TAREA "Scan Disk"  INICIO = 0  PERIODO = 0  PRIORIDAD=2
+	[CPU, 3] 
+	[ 2 , 3 ] 
+	[ CPU , 1 ] 
+	[ 3, 2]
+	[ CPU, 2]
+TAREA "Format"  PRIORIDAD=1 INICIO= 0
+	[ CPU , 3 ]  
+	[ 1 , 3 ] 
+	[ CPU , 1] 
+	[ 2 , 1]
+	[ CPU , 3]
+TAREA "Nombre de Tarea "  PRIORIDAD=3 INICIO=0
+	[ CPU , 1 ]  
+	[ 1 , 3 ] 
+	[ CPU,1] 
+	[ 2,1] 
+	[ CPU, 4] 
+	[ 2, 3] 
+	[ CPU, 1] 
+	[ 1, 2] 
+	[ CPU, 3]
+TAREA "Nombre de Tarea "  PRIORIDAD=3 INICIO=0
+	[CPU, 3]
+	[1, 3]
+	[CPU, 1]
+	[2, 1]
+	[CPU, 1]
+	[3, 2]
+	[CPU, 1]
+	[4, 2]
+	[CPU, 1]
+	[5, 3]
+	[CPU, 1]

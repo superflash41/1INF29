@@ -1,0 +1,16 @@
+# Este conjunto de tareas tiene un error de sintaxis...
+
+TAREA "Tarea Uno" INICIO= 0 PERIODO= 0 PRIORIDAD=2
+	[CPU, 9]
+
+	[9]
+
+
+TAREA "Tarea Dos" INICIO= 1 PERIODO= 0 PRIORIDAD=2
+	[CPU, 7]
+
+TAREA "Tarea Tres" INICIO= 2 PERIODO= 0 PRIORIDAD=1
+	[CPU, 5]
+
+TAREA "Tarea Cuatro" INICIO= 3 PERIODO= 0 PRIORIDAD=1
+	[CPU, 3]

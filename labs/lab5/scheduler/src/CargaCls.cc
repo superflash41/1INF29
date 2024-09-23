@@ -1,0 +1,225 @@
+// *************************************************************************
+// 
+//  Departamento de Informática de Sistema y Computadores (DISCA)
+//  Universidad Politecnica de Valencia.                         
+// 
+//  Autor: Sergio Sáez (ssaez@disca.upv.es)
+// 
+//  Fichero: CargaCls.cc
+//  
+//  Fecha: 
+// 
+//  Descripción: 
+// 	 Implementaciónde la clase 'CargaCls'
+// 
+// *************************************************************************
+
+#define CargaCls_CC
+
+// *** Includes ***********************************************
+
+#include <stdio.h>
+#include "CargaCls.hh"
+
+// *** Definiciones Externas **********************************
+
+// *** Métodos Públicos ***************************************
+
+// *** CargaCls::CargaCls
+
+CargaCls::CargaCls ( )
+{
+  // *** Objetos Locales. Inicialización
+  
+  
+  // *** Cuerpo principal del método
+  
+  
+} // end CargaCls::CargaCls
+
+
+// *** CargaCls::Inicializa
+// Inicializa el manejador de la carga
+
+int CargaCls::Inicializa 
+( 
+ tarea_c *		TablaTareas,
+ int			NumeroTareas
+ )
+{
+  // *** Objetos Locales. Inicialización
+
+  tarea_activa_t *	tarea;
+
+  // *** Cuerpo principal del método
+
+  tbl_tareas= TablaTareas;
+  n_tareas= NumeroTareas;
+
+  for (int i= 0; i<n_tareas; i++)
+    {
+      // --- Crea la primera subtarea de cada tarea del conjunto 
+      tarea= new tarea_activa_t;
+      tarea->ident= i;
+      tarea->subident= 0;
+      tarea->llegada= tbl_tareas[i].llegada;
+      tarea->computo= tbl_tareas[i].subtarea[0].tiempo;
+      tarea->recurso= tbl_tareas[i].subtarea[0].recurso;
+      tarea->prioridad= tbl_tareas[i].prioridad;
+
+      // --- Inserta la tarea
+      cl_llegadas.push(tarea);
+
+#ifdef DEBUG
+      fprintf(stdout, "LD>> t: Inicio Tk: %d-%d "
+	      "(O: %ld, C: %ld, R: %d, Pr: %d)\n",
+	      tarea->ident, tarea->subident,
+	      tarea->llegada, tarea->computo, 
+	      tarea->recurso, tarea->prioridad  
+	      );
+#endif
+    } // endfor
+  
+  return OK;
+
+} // end CargaCls::Inicializa
+
+
+// *** CargaCls::SiguienteLlegada
+// Informa de la siguiente activación
+
+tiempo_t CargaCls::SiguienteLlegada ( )
+{
+  // *** Cuerpo principal del método
+
+  if (!cl_subtareas.empty())
+    return (cl_subtareas.front()->llegada);
+  else if (!cl_llegadas.empty())
+    return (cl_llegadas.top()->llegada);
+  else
+    return (MAX_TIEMPO);
+
+} // end CargaCls::SiguienteLlegada
+
+
+// *** CargaCls::BorraSiguiente
+// Saca de la lista la siguiente activación
+
+tarea_activa_t * CargaCls::BorraSiguiente ( )
+{
+  // *** Objetos Locales. Inicialización
+
+  tarea_activa_t *	tarea;
+  tarea_activa_t *	sig_tarea;
+
+  // *** Cuerpo principal del método
+
+  if (!cl_subtareas.empty())
+    {
+      sig_tarea= cl_subtareas.front();
+      cl_subtareas.pop();
+    } 
+  else if (!cl_llegadas.empty())
+    {
+      sig_tarea= cl_llegadas.top();
+      cl_llegadas.pop();
+				// Tarea periódica
+      if (tbl_tareas[sig_tarea->ident].periodo > 0)
+	{
+	  int i= sig_tarea->ident;
+
+	  // --- Genera la siguiente ocurrencia
+	  tarea= new tarea_activa_t;
+	  tarea->ident= i;
+	  tarea->subident= 0;
+	  tarea->llegada= sig_tarea->llegada + tbl_tareas[i].periodo;
+	  tarea->computo= tbl_tareas[i].subtarea[0].tiempo;
+	  tarea->recurso= tbl_tareas[i].subtarea[0].recurso;
+	  tarea->prioridad= tbl_tareas[i].prioridad;
+
+	  // --- Inserta la tarea
+	  cl_llegadas.push(tarea);
+
+	} // endif
+    }
+  else
+    sig_tarea= NULL;
+
+#ifdef DEBUG
+  if (sig_tarea != NULL)
+    {
+      fprintf(stdout, "LD>> Tk: %d-%d "
+	      "(O: %ld, C: %ld, R: %d, Pr: %d)\n", 
+	      sig_tarea->ident, sig_tarea->subident,
+	      sig_tarea->llegada, sig_tarea->computo, 
+	      sig_tarea->recurso, sig_tarea->prioridad  
+	      );
+    } // endif
+#endif
+
+  return (sig_tarea);
+
+} // end CargaCls::BorraSiguiente
+
+
+// *** CargaCls::TareaTerminada
+// Termina una subtarea
+
+bool CargaCls::TareaTerminada
+(
+ tarea_activa_t *	tarea,
+ tiempo_t		tiempo_actual
+ )
+{
+  // *** Objetos Locales. Inicialización
+
+  int			i= tarea->ident;
+  int			sig_subtarea= tarea->subident+1;
+
+  // *** Cuerpo principal del método
+
+  if (tbl_tareas[i].Nsubtareas > sig_subtarea)
+    {
+      // --- Genera la siguiente subtarea
+      tarea->subident= sig_subtarea;
+      tarea->llegada= tiempo_actual;
+      tarea->computo= tbl_tareas[i].subtarea[sig_subtarea].tiempo;
+      tarea->recurso= tbl_tareas[i].subtarea[sig_subtarea].recurso;
+      tarea->prioridad= tbl_tareas[i].prioridad;
+      
+      // --- Inserta la tarea
+      cl_subtareas.push(tarea);
+      return false;
+    }
+  else
+    {
+      delete tarea;
+      return true;
+    } // endif
+
+} // end CargaCls::TareaTerminada
+
+
+// *** CargaCls::Termina
+// Termina la simulación de la carga
+
+void CargaCls::Termina ( )
+{
+  // *** Cuerpo principal del método
+
+  while (!cl_subtareas.empty())
+    {
+      delete (cl_subtareas.front());
+      cl_subtareas.pop();
+    } // endwhile
+
+  while (!cl_llegadas.empty())
+    {
+      delete (cl_llegadas.top());
+      cl_llegadas.pop();
+    } // endwhile
+
+} // end CargaCls::Termina
+
+// *** Métodos Privados ***************************************
+

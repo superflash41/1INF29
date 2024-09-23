@@ -1,0 +1,36 @@
+# Esto es un comentario.
+
+# Observa como los nombres están entrecomillados.
+RECURSO "Disco SCSI"
+RECURSO "Teclado"
+RECURSO "Unidad Zip"
+
+# Los recuros se tiene que declarar antes de utilizarlos
+
+#   La descripción de una tarea se puede hacer en varias
+# líneas con lo que se facilita la legibilidad.
+#   Esta tarea copia un fichero del dico SCSI a Zip.
+TAREA "cp" INICIO=0 PRIORIDAD=1 
+	[CPU,2]
+	[1,1]
+	[CPU,1]
+	[3,2]
+	[CPU,1]
+	[1,1]
+	[CPU,1]
+	[3,2]
+	[CPU,1]
+
+#   El compilador.... sobre todo neceita mucha CPU.
+TAREA "gcc" INICIO=0 PRIORIDAD=1
+	[CPU,1]
+	[1,3]
+	[CPU,10]
+	[1,1]
+	[CPU,1]
+
+#   El demonio que mantiene la memoria virtual en disco
+TAREA "kswapd" INICIO=1 PRIORIDAD=0
+	[CPU,1]
+	[1,3]
+	[CPU,1]

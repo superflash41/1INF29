@@ -1,0 +1,28 @@
+/* XPM */
+static const char *tareas[] = {
+/* width height num_colors chars_per_pixel */
+"    14    14        5            1",
+/* colors */
+". c #000000",
+"# c #808080",
+"a c #c0c0c0",
+"b c #f8fc00",
+"c c #f8fcf8",
+/* pixels */
+
+"aaaaaaaaaaaaaa",
+"aaa....aaaaaaa",
+"a..bccb.....aa",
+"a.#cc#cccbc.aa",
+"a.#bc.cbccc.aa",
+"a..#.#.#.#c.aa",
+"a.#bc.cbccc.aa",
+"a.#cc#cccbc.aa",
+"a.#bc.cbccc.aa",
+"a..#.#.#.#c.aa",
+"a.#bc.cbccc.aa",
+"a.#cc#cccbc.aa",
+"a.###.#####.aa",
+"a...........aa",
+
+};
