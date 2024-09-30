@@ -1,7 +1,9 @@
 # Concurrency
 ## Concurrency vs Parallelism
 > Concurrency is about **dealing with** lots of things at once.
+>
 > Parallelism is about **doing** lots of things at once.
+> 
 > \- Rob Pike
 # Go
 Also referred to as Golang, it is a expressive, concise, clean, and efficient programming language (at least Google says so).
