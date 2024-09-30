@@ -71,5 +71,4 @@ func main() {
 ---
 # References
 - [Go Official Documentation](https://go.dev/doc/)
-- 
 
