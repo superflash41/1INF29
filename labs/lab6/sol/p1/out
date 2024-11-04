@@ -1,0 +1,87 @@
+=============================================== 
+Demonstration of next fit: 
+=============================================== 
+We ask for 0 bytes located on 0x5d6903144000
+Holes:
+Freep: 5d68eba76090
+Address: 5d6903140000 - Size:1023 / Next: 5d68eba76090 - Size:0
+Address: 5d68eba76090 - Size:0 / Next: 5d6903140000 - Size:1023
+
+---------------------------------------- 
+We ask for 2048 bytes located on 0x5d69031437f0
+Holes:
+Freep: 5d68eba76090
+Address: 5d6903140000 - Size:894 / Next: 5d68eba76090 - Size:0
+Address: 5d68eba76090 - Size:0 / Next: 5d6903140000 - Size:894
+
+---------------------------------------- 
+We are freeing memory in this iteration:
+Holes:
+Freep: 5d6903140000
+Address: 5d68eba76090 - Size:0 / Next: 5d6903140000 - Size:1023
+Address: 5d6903140000 - Size:1023 / Next: 5d68eba76090 - Size:0
+
+---------------------------------------- 
+We ask for 4096 bytes located on 0x5d6903142ff0
+Holes:
+Freep: 5d68eba76090
+Address: 5d6903140000 - Size:766 / Next: 5d68eba76090 - Size:0
+Address: 5d68eba76090 - Size:0 / Next: 5d6903140000 - Size:766
+
+---------------------------------------- 
+We ask for 6144 bytes located on 0x5d69031417e0
+Holes:
+Freep: 5d68eba76090
+Address: 5d6903140000 - Size:381 / Next: 5d68eba76090 - Size:0
+Address: 5d68eba76090 - Size:0 / Next: 5d6903140000 - Size:381
+
+---------------------------------------- 
+We are freeing memory in this iteration:
+Holes:
+Freep: 5d6903140000
+Address: 5d68eba76090 - Size:0 / Next: 5d6903140000 - Size:766
+Address: 5d6903140000 - Size:766 / Next: 5d68eba76090 - Size:0
+
+---------------------------------------- 
+We ask for 8192 bytes located on 0x5d6903140fe0
+Holes:
+Freep: 5d68eba76090
+Address: 5d6903140000 - Size:253 / Next: 5d68eba76090 - Size:0
+Address: 5d68eba76090 - Size:0 / Next: 5d6903140000 - Size:253
+
+---------------------------------------- 
+We ask for 10240 bytes located on 0x5d6903145800
+Holes:
+Freep: 5d6903140000
+Address: 5d6903144000 - Size:383 / Next: 5d68eba76090 - Size:0
+Address: 5d68eba76090 - Size:0 / Next: 5d6903140000 - Size:253
+Address: 5d6903140000 - Size:253 / Next: 5d6903144000 - Size:383
+
+---------------------------------------- 
+We are freeing memory in this iteration:
+Holes:
+Freep: 5d6903144000
+Address: 5d68eba76090 - Size:0 / Next: 5d6903140000 - Size:253
+Address: 5d6903140000 - Size:253 / Next: 5d6903144000 - Size:1024
+Address: 5d6903144000 - Size:1024 / Next: 5d68eba76090 - Size:0
+
+---------------------------------------- 
+We ask for 12288 bytes located on 0x5d6903145000
+Holes:
+Freep: 5d6903140000
+Address: 5d6903144000 - Size:255 / Next: 5d68eba76090 - Size:0
+Address: 5d68eba76090 - Size:0 / Next: 5d6903140000 - Size:253
+Address: 5d6903140000 - Size:253 / Next: 5d6903144000 - Size:255
+
+---------------------------------------- 
+We can see how the holes are stored in a circular list as addresses
+at the beginning point to each other (just 2 holes). This is the main property
+of next-fit algorithm.
+Then, we can appreciate how the algorithm starts from where it left the last
+iteration becuse of the order in which holes are printed. Also, when we get
+three holes is noticeable how the freeing is made also starting from where it left
+on previous iteration and also the value of freep pointer can show this.
+
+This demonstrates the use of xmalloc and xfree for the next-fit algorithm.
+
+NOTE: I include a function called showHoles(). It is declared in the xalloc.c file.

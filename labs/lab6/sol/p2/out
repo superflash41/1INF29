@@ -1,0 +1,148 @@
+=============================================== 
+Demonstration of BEST-FIT Allocation: 
+=============================================== 
+1 initial allocation of 2048 bytes:
+Size (in units) needed: 129
+Before malloc
+Holes:
+Freep: 5f00d356d050
+Address: 5f00d356d050 - Size:0 / Next: 5f00d356d050 - Size:0
+
+Calling morecore...
+Best: 5f00f957f000
+
+Best is bigger than the desired space...
+Best: 5f00f957f000 - size: 1024 - next: 5f00d356d050
+Size (in units) of the new hole: 895
+New allocated space ---- Address:5f00f95827f0 - size: 129
+After malloc
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:895 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:895
+
+Address of the new hole (no header):5f00f9582800
+Allocated 2048 bytes at 0x5f00f9582800
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:895 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:895
+
+2 allocate 4096 bytes:
+Size (in units) needed: 257
+Before malloc
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:895 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:895
+
+Best: 5f00f957f000
+
+Best is bigger than the desired space...
+Best: 5f00f957f000 - size: 895 - next: 5f00d356d050
+Size (in units) of the new hole: 638
+New allocated space ---- Address:5f00f95817e0 - size: 257
+After malloc
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:638 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:638
+
+Address of the new hole (no header):5f00f95817f0
+Allocated 4096 bytes at 0x5f00f95817f0
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:638 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:638
+
+3 free the first 2048 bytes block:
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:638 / Next: 5f00f95827f0 - Size:129
+Address: 5f00f95827f0 - Size:129 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:638
+
+4 allocate 1024 bytes (should fit into the 2048 byte hole):
+Size (in units) needed: 65
+Before malloc
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:638 / Next: 5f00f95827f0 - Size:129
+Address: 5f00f95827f0 - Size:129 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:638
+
+Best: 5f00f957f000
+
+Best is bigger than the desired space...
+Best: 5f00f957f000 - size: 638 - next: 5f00f95827f0
+Size (in units) of the new hole: 573
+New allocated space ---- Address:5f00f95813d0 - size: 65
+After malloc
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:573 / Next: 5f00f95827f0 - Size:129
+Address: 5f00f95827f0 - Size:129 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:573
+
+Address of the new hole (no header):5f00f95813e0
+Allocated 1024 bytes at 0x5f00f95813e0
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:573 / Next: 5f00f95827f0 - Size:129
+Address: 5f00f95827f0 - Size:129 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:573
+
+5 allocate 512 bytes (best-fit should find the smallest suitable hole):
+Size (in units) needed: 33
+Before malloc
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:573 / Next: 5f00f95827f0 - Size:129
+Address: 5f00f95827f0 - Size:129 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:573
+
+Best: 5f00f957f000
+
+Best is bigger than the desired space...
+Best: 5f00f957f000 - size: 573 - next: 5f00f95827f0
+Size (in units) of the new hole: 540
+New allocated space ---- Address:5f00f95811c0 - size: 33
+After malloc
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:540 / Next: 5f00f95827f0 - Size:129
+Address: 5f00f95827f0 - Size:129 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:540
+
+Address of the new hole (no header):5f00f95811d0
+Allocated 512 bytes at 0x5f00f95811d0
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:540 / Next: 5f00f95827f0 - Size:129
+Address: 5f00f95827f0 - Size:129 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:540
+
+6 free the 4096 bytes block:
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:540 / Next: 5f00f95817e0 - Size:386
+Address: 5f00f95817e0 - Size:386 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:540
+
+7 free all remaining blocks:
+Holes:
+Freep: 5f00d356d050
+Address: 5f00f957f000 - Size:1024 / Next: 5f00f95827f0 - Size:129
+Address: 5f00f95827f0 - Size:129 / Next: 5f00d356d050 - Size:0
+Address: 5f00d356d050 - Size:0 / Next: 5f00f957f000 - Size:1024
+
+
+=============================================== 
+Best-Fit Allocation Test Complete.
+=============================================== 
+We can see how the holes are stored in a circular linked list,
+but the traversing of the list always starts from the beginning
+The algorithm works as follows: we always start from the beginning
+and we search for the space that is bigger and has the closest size to the desired one.
+Then, we choose this hole and add the small hole to the list of holes.
+This is what makes the algorithm best-fit.

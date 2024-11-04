@@ -1,0 +1,175 @@
+=============================================== 
+Demonstration of BEST-FIT Allocation and Reallocation: 
+=============================================== 
+initial allocation of 2048 bytes:
+Size (in units) needed: 129
+Before malloc
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d94ea4b5040 - Size:0 / Next: 5d94ea4b5040 - Size:0
+
+Calling morecore...
+Best: 5d951f20b000
+
+Best is bigger than the desired space...
+Best: 5d951f20b000 - size: 1024 - next: 5d94ea4b5040
+Size (in units) of the new hole: 895
+New allocated space ---- Address:5d951f20e7f0 - size: 129
+After malloc
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:895 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:895
+
+Address of the new hole (no header):5d951f20e800
+Allocated 2048 bytes at 0x5d951f20e800
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:895 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:895
+
+2 allocate 4096 bytes:
+Size (in units) needed: 257
+Before malloc
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:895 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:895
+
+Best: 5d951f20b000
+
+Best is bigger than the desired space...
+Best: 5d951f20b000 - size: 895 - next: 5d94ea4b5040
+Size (in units) of the new hole: 638
+New allocated space ---- Address:5d951f20d7e0 - size: 257
+After malloc
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:638 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:638
+
+Address of the new hole (no header):5d951f20d7f0
+Allocated 4096 bytes at 0x5d951f20d7f0
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:638 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:638
+
+3 free the first 2048 bytes block:
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:638 / Next: 5d951f20e7f0 - Size:129
+Address: 5d951f20e7f0 - Size:129 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:638
+
+4 Allocate 1024 bytes (should fit into the 2048-byte hole):
+Size (in units) needed: 65
+Before malloc
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:638 / Next: 5d951f20e7f0 - Size:129
+Address: 5d951f20e7f0 - Size:129 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:638
+
+Best: 5d951f20b000
+
+Best is bigger than the desired space...
+Best: 5d951f20b000 - size: 638 - next: 5d951f20e7f0
+Size (in units) of the new hole: 573
+New allocated space ---- Address:5d951f20d3d0 - size: 65
+After malloc
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:573 / Next: 5d951f20e7f0 - Size:129
+Address: 5d951f20e7f0 - Size:129 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:573
+
+Address of the new hole (no header):5d951f20d3e0
+Allocated 1024 bytes at 0x5d951f20d3e0
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:573 / Next: 5d951f20e7f0 - Size:129
+Address: 5d951f20e7f0 - Size:129 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:573
+
+5 allocate 512 bytes (best-fit should find the smallest suitable hole):
+Size (in units) needed: 33
+Before malloc
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:573 / Next: 5d951f20e7f0 - Size:129
+Address: 5d951f20e7f0 - Size:129 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:573
+
+Best: 5d951f20b000
+
+Best is bigger than the desired space...
+Best: 5d951f20b000 - size: 573 - next: 5d951f20e7f0
+Size (in units) of the new hole: 540
+New allocated space ---- Address:5d951f20d1c0 - size: 33
+After malloc
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:540 / Next: 5d951f20e7f0 - Size:129
+Address: 5d951f20e7f0 - Size:129 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:540
+
+Address of the new hole (no header):5d951f20d1d0
+Allocated 512 bytes at 0x5d951f20d1d0
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:540 / Next: 5d951f20e7f0 - Size:129
+Address: 5d951f20e7f0 - Size:129 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:540
+
+6 Shrink the 4096 bytes block to 2048 bytes using xrealloc:
+Shrunk block at 0x5d951f20dff0 to 2048 bytes
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:540 / Next: 5d951f20e7f0 - Size:129
+Address: 5d951f20e7f0 - Size:129 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:540
+
+7 Expand the 1024 bytes block to 3000 bytes using xrealloc:
+Size (in units) needed: 189
+Before malloc
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:540 / Next: 5d951f20e7f0 - Size:129
+Address: 5d951f20e7f0 - Size:129 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:540
+
+Best: 5d951f20b000
+
+Best is bigger than the desired space...
+Best: 5d951f20b000 - size: 540 - next: 5d951f20e7f0
+Size (in units) of the new hole: 351
+New allocated space ---- Address:5d951f20c5f0 - size: 189
+After malloc
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:351 / Next: 5d951f20e7f0 - Size:129
+Address: 5d951f20e7f0 - Size:129 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:351
+
+Address of the new hole (no header):5d951f20c600
+Expanded block at 0x5d951f20c600 to 3000 bytes
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:351 / Next: 5d951f20d3d0 - Size:65
+Address: 5d951f20d3d0 - Size:65 / Next: 5d951f20e7f0 - Size:129
+Address: 5d951f20e7f0 - Size:129 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:351
+
+9 Free all remaining blocks:
+Holes:
+Freep: 5d94ea4b5040
+Address: 5d951f20b000 - Size:351 / Next: 5d951f20d1c0 - Size:98
+Address: 5d951f20d1c0 - Size:98 / Next: 5d951f20dfe0 - Size:258
+Address: 5d951f20dfe0 - Size:258 / Next: 5d94ea4b5040 - Size:0
+Address: 5d94ea4b5040 - Size:0 / Next: 5d951f20b000 - Size:351
+
+
+=============================================== 
+Best-Fit Allocation and Reallocation Test Complete.
+=============================================== 
