@@ -56,7 +56,7 @@ int main(void) {
     printf("We can see how the holes are stored in a circular linked list,\n");
     printf("but the traversing of the list always starts from the beginning\n");
     printf("The algorithm works as follows: we always start from the beginning\n");
-    printf("and we search for the space that is bigger and has the closest size to the desired one.\n");
+    printf("and we search for the space that is bigger.\n");
     printf("Then, we choose this hole and add the small hole to the list of holes.\n");
     printf("This is what makes the algorithm best-fit.\n");
     exit(0);

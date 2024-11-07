@@ -77,12 +77,12 @@ void *xmalloc (size_t nbytes) {
 			best->s.size -= nunits;
             best += best->s.size;
             best->s.size = nunits;
-			printf("New allocated space ---- Address:%lx - size: %ld\n", (ul)best, best->s.size);
-			printf("After malloc\n");
-			showHoles();
-			printf("Address of the new hole (no header):%lx\n", (ul)(best+1));
-			return (void*)(best+1);
 		}
+        printf("New allocated space ---- Address:%lx - size: %ld\n", (ul)best, best->s.size);
+        printf("After malloc\n");
+        showHoles();
+        printf("Address of the new hole (no header):%lx\n", (ul)(best+1));
+		return (void*)(best+1);
 	}
     return NULL; // no hole available
 }
