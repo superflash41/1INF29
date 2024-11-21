@@ -1,5 +1,5 @@
 # 1INF29
-This repository contains the labs and exercises from the **Operating Systems** course at PUCP, taught by Viktor Khlebnikov in the semester 2024-1. The repository includes solutions and guides for the course, covering a variety of topics essential to understanding operating systems and their inner workings.
+This repository contains the labs and exercises from the **Operating Systems** course at PUCP, taught by Viktor Khlebnikov in the semester 2024-1. It includes solutions and guides for the course, covering a variety of topics essential for understanding operating systems and their inner workings.
 
 ## Contents
 - **Lab Solutions**: solutions to all labs from the course
