@@ -22,3 +22,6 @@ Clone the repository to access all the labs, solutions, and guides. Each lab has
 ```bash
 git clone https://github.com/superflash41/1INF29.git
 ```
+
+---
+**Note**: For comprehensive understanding, it is recommended to review the reference books available in the `books/` directory. 
