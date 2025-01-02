@@ -6,11 +6,13 @@ This repository contains labs and materials from the **Operating Systems** cours
 
 1. Linux fundamentals and shell scripting
 2. Process management in C using `fork()`
-3. Multiprogramming with POSIX threads in C
+3. Multiprogramming with _POSIX_ threads in C
 4. Concurrent programming in Go
 5. CPU scheduling algorithms implementation
 6. Custom memory allocator (xmalloc) in C
 7. FAT file system analysis and reconstruction
+
+![pid1](labs/lab1/242/assets/pid-1.jpeg)
 
 ## Usage
 
