@@ -12,7 +12,7 @@ This repository contains labs and materials from the **Operating Systems** cours
 6. Custom memory allocator (xmalloc) in C
 7. FAT file system analysis and reconstruction
 
-<img src="labs/lab1/242/assets/pid-1.jpeg" width="300"/>
+<img src="labs/lab1/242/assets/pid-1.jpeg" width="500" style="display: block; margin: 0 auto;" />
 
 ## Usage
 
