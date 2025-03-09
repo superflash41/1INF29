@@ -11,16 +11,11 @@ Labs and materials from the **Operating Systems** course at PUCP, **taught by Vi
 5. CPU scheduling algorithms implementation
 6. Custom memory allocator (`xmalloc`) in C
 7. FAT file system
+
+
 ![pid1](labs/lab1/242/assets/pid-1.jpeg)
 
-## Usage
-
-Clone the repo to access all the labs, solutions, and guides.
-
-```bash
-git clone https://github.com/superflash41/1INF29.git
-```
 
 ---
 
-**Note**: For comprehensive understanding, it is recommended to review the reference books available in the [`books/`](/books) directory.
+**Note**: It is recommended to review the reference [books](/books).
