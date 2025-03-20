@@ -13,7 +13,7 @@ Labs and materials from the **Operating Systems** course at PUCP, **taught by Vi
 7. FAT file system
 
 
-![pid1](labs/lab1/242/assets/pid-1.jpeg)
+![pid1](labs/lab1/2024-2/assets/pid-1.jpeg)
 
 
 ---
