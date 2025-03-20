@@ -6,12 +6,13 @@
 #include <time.h>
 #include <signal.h>
 
+// Saymon N. - 20211866
+
 #define READ 0
 #define WRITE 1
 #define CMDSZ 100
 
 int cmp(const void* a, const void* b) { return *((int*)b) - *((int*)a); }
-
 void close_fdp(int* fdp) { close(fdp[READ]); close(fdp[WRITE]); }
 
 int main(int na, char** argv) {

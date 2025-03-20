@@ -3,6 +3,8 @@
 #include <stdlib.h>
 #include <sys/wait.h>
 
+// Saymon N. - 20211866
+
 #define READ 0
 #define WRITE 1
 
