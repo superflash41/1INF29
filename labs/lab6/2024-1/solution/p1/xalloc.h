@@ -3,7 +3,6 @@
  *
  * Prototipos de las funciones pedidas
  *
- * NO MODIFICAR ESTE FICHERO
  */
 
 #if defined(NOXALL)

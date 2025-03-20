@@ -1,10 +1,11 @@
-// superflash41
 package main
 
 import (
 	"fmt"
 	"sync"
 )
+
+// Saymon N. - 20211866
 
 var (
 	wg sync.WaitGroup
@@ -76,7 +77,7 @@ func worker5() { // c[4]
 
 func main() {
 	aorb = 0 // AB:0   BA:1
-	// create the slice of channels
+	// slice of channels
 	c = make([]chan int, 5)
 	for i:= range c {
 		c[i] = make(chan int, 1)
