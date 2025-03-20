@@ -1,5 +1,5 @@
 #!/bin/bash
-# superflash41
+# Saymon N. - 20211866
 for file in "$PWD"/*; do
 	if [ -f "$file" ]; then
 		fn=$(basename "$file")

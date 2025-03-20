@@ -1,5 +1,5 @@
 #!/bin/bash
-# superflash41
+# Saymon N. - 20211866
 num=$1
 last=$2
 	

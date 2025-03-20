@@ -1,5 +1,5 @@
 #!/bin/bash
-# superflash41
+# Saymon N. - 20211866
 while IFS= read -r line; do
 	words=($line)
 	first="${words[0]}"
